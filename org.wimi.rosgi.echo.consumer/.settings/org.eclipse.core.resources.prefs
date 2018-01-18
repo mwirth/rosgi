@@ -1,0 +1,5 @@
+eclipse.preferences.version=1
+encoding//src/org/wimi/rosgi/echo/consumer/command/EchoCommand.java=UTF-8
+encoding//test/org/wimi/rosgi/echo/consumer/command/ExampleCommandTest.java=UTF-8
+encoding/bnd.bnd=UTF-8
+encoding/readme.md=UTF-8

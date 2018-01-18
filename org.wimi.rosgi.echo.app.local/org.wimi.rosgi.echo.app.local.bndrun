@@ -1,0 +1,17 @@
+#
+#  RUN SPECIFICATION
+#
+
+
+Bundle-Version:				1.0.0.${tstamp}
+Bundle-SymbolicName:		org.wimi.rosgi.echo.app.local.launch
+JPM-Command:				echo
+
+
+-runfw:						org.eclipse.osgi
+
+-runrequires:  \
+	osgi.identity;filter:='(osgi.identity=org.wimi.rosgi.echo.app.local)'
+
+-runbundles: \
+	${error;Resolve first}

@@ -1,0 +1,31 @@
+#
+# org.wimi.rosgi.echo.consumer COMMAND
+#
+
+Bundle-Version:					1.0.0.${tstamp}
+Bundle-Description: \
+	A Gogo command org.wimi.rosgi.echo.consumer. \
+	\
+	${warning;Please update this Bundle-Description in org.wimi.rosgi.echo.consumer/api.bnd}
+
+Private-Package:  \
+	org.wimi.rosgi.echo.consumer.command
+
+-includeresource: {readme.md}
+
+-buildpath: \
+	osgi.enroute.base.api;version=2.1,\
+	org.wimi.rosgi.echo.api;version=latest
+
+-testpath: \
+	osgi.enroute.junit.wrapper;version=4.12, \
+	osgi.enroute.hamcrest.wrapper;version=1.3
+
+-runrequires: \
+	osgi.identity;filter:='(osgi.identity=foo.bar.gogo)', \
+	osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.runtime)',\
+	osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.shell)',\
+	osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.command)'
+
+-runbundles: \
+	${error;Resolve first}

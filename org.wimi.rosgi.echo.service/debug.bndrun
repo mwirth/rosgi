@@ -1,0 +1,13 @@
+#
+# org.wimi.rosgi.echo.service DEBUG LAUNCH SPECFICATION 
+#
+
+-include: ~org.wimi.rosgi.echo.service.bndrun
+
+-runrequires.debug:  \
+	${debug-bundles}
+
+-runtrace: true
+
+-runbundles: \
+	${error;Resolve first}

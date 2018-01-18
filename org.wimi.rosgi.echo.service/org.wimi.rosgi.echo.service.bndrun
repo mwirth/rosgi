@@ -1,0 +1,13 @@
+#
+# org.wimi.rosgi.echo.service LAUNCH SPECIFICATION
+#
+
+
+Bundle-Version:				1.0.0.${tstamp}
+Bundle-SymbolicName:		org.wimi.rosgi.echo.service.launch
+JPM-Command:				provider
+
+
+
+-runbundles: ${error;You must first resolve this bndrun file before you can run it}
+-runrequires: osgi.identity;filter:='(osgi.identity=org.wimi.rosgi.echo.service)'
