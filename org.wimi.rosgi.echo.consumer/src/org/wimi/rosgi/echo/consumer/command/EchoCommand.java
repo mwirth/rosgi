@@ -9,7 +9,6 @@ import java.nio.charset.StandardCharsets;
 
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
-import org.osgi.service.log.LogService;
 import org.wimi.rosgi.echo.api.EchoService;
 
 import osgi.enroute.debug.api.Debug;
@@ -20,8 +19,8 @@ import osgi.enroute.debug.api.Debug;
 })
 public class EchoCommand
 {
-	@Reference
-	private LogService log;
+	// @Reference
+	// private LogService log;
 
 	private EchoService echoService;
 

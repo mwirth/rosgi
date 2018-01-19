@@ -10,14 +10,21 @@ import java.util.concurrent.CompletableFuture;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Deactivate;
+import org.osgi.service.component.annotations.Reference;
+import org.osgi.service.log.LogService;
 import org.osgi.service.metatype.annotations.Designate;
 import org.osgi.service.metatype.annotations.ObjectClassDefinition;
 import org.wimi.rosgi.echo.api.EchoService;
 
 @Designate(ocd = EchoServiceImpl.Config.class, factory = true)
-@Component(name = "org.wimi.rosgi.echo.service")
+// @Component(immediate = true, name = "org.wimi.rosgi.echo.service", property = { "service.exported.interfaces=*",
+// "service.exported.configs=aries.fastbin" })
+@Component(immediate = true, property = { "service.exported.interfaces=*", "service.exported.configs=aries.fastbin" })
 public class EchoServiceImpl implements EchoService
 {
+
+	@Reference
+	private LogService logService;
 
 	@ObjectClassDefinition
 	@interface Config
@@ -30,12 +37,15 @@ public class EchoServiceImpl implements EchoService
 	@Activate
 	void activate(Config config)
 	{
+		System.out.println("activating");
+		logService.log(LogService.LOG_INFO, "activating");
 		this.name = config.name();
 	}
 
 	@Deactivate
 	void deactivate()
 	{
+		System.out.println("deactivating");
 	}
 
 	@Override
