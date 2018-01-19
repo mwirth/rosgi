@@ -59,5 +59,107 @@
 		    <version>3.5.1</version>
 		</dependency>
 
+		<dependency>
+			<groupId>org.apache.felix</groupId>
+			<artifactId>org.apache.felix.fileinstall</artifactId>
+			<version>3.5.8</version>
+		</dependency>
+
+<dependency>
+    <groupId>org.apache.aries.rsa</groupId>
+    <artifactId>org.apache.aries.rsa.provider</artifactId>
+    <version>1.11.0</version>
+
+</dependency>
+
+
+
+<dependency>
+    <groupId>org.apache.aries.rsa.discovery</groupId>
+    <artifactId>org.apache.aries.rsa.discovery.zookeeper</artifactId>
+    <version>1.11.0</version>
+</dependency>
+
+<dependency>
+    <groupId>org.apache.aries.rsa</groupId>
+    <artifactId>org.apache.aries.rsa.parent</artifactId>
+    <version>1.11.0</version>
+    <type>pom</type>
+</dependency>
+
+<dependency>
+    <groupId>org.apache.aries.rsa</groupId>
+    <artifactId>org.apache.aries.rsa.core</artifactId>
+    <version>1.11.0</version>
+</dependency>
+
+
+<dependency>
+    <groupId>org.apache.zookeeper</groupId>
+    <artifactId>zookeeper</artifactId>
+    <version>3.4.10</version>
+    <type>pom</type>
+</dependency>
+
+<dependency>
+    <groupId>org.apache.aries.rsa.discovery</groupId>
+    <artifactId>org.apache.aries.rsa.discovery.command</artifactId>
+    <version>1.11.0</version>
+</dependency>
+
+<dependency>
+    <groupId>org.apache.aries.rsa</groupId>
+    <artifactId>org.apache.aries.rsa.eapub</artifactId>
+    <version>1.11.0</version>
+</dependency>
+
+<dependency>
+    <groupId>org.apache.aries.rsa</groupId>
+    <artifactId>org.apache.aries.rsa.spi</artifactId>
+    <version>1.11.0</version>
+</dependency>
+
+<dependency>
+    <groupId>org.apache.aries.rsa</groupId>
+    <artifactId>org.apache.aries.rsa.topology-manager</artifactId>
+    <version>1.11.0</version>
+</dependency>
+
+<!--
+<dependency>
+    <groupId>org.apache.hadoop.zookeeper</groupId>
+    <artifactId>zookeeper</artifactId>
+    <version>3.4.0</version>
+</dependency>
+
+<dependency>
+    <groupId>org.apache.zookeeper</groupId>
+    <artifactId>zookeeper</artifactId>
+    <version>3.4.0</version>
+</dependency>
+<dependency>
+    <groupId>org.apache.zookeeper</groupId>
+    <artifactId>zookeeper</artifactId>
+    <version>3.4.10</version>
+    <type>pom</type>
+</dependency>
+-->
+
+
+
+<!--
+<dependency>
+    <groupId>org.ops4j.pax.logging</groupId>
+    <artifactId>pax-logging-api</artifactId>
+    <version>1.10.1</version>
+</dependency>
+
+<dependency>
+    <groupId>org.ops4j.pax.logging</groupId>
+    <artifactId>pax-logging-service</artifactId>
+    <version>1.10.1</version>
+</dependency>
+ -->
+
 	</dependencies>
 </project>

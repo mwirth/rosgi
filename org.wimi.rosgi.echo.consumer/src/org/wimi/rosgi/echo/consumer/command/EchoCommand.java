@@ -9,19 +9,19 @@ import java.nio.charset.StandardCharsets;
 
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
-import org.osgi.service.log.LogService;
 import org.wimi.rosgi.echo.api.EchoService;
 
 import osgi.enroute.debug.api.Debug;
 
 @Component(service = EchoCommand.class, property = { Debug.COMMAND_SCOPE + "=rosgi", Debug.COMMAND_FUNCTION + "=echo",
-	Debug.COMMAND_FUNCTION + "=echoAsync", Debug.COMMAND_FUNCTION + "=echoStream", Debug.COMMAND_FUNCTION + "=echoStream2"
+	Debug.COMMAND_FUNCTION + "=echoAsync", Debug.COMMAND_FUNCTION + "=echoReturnStream",
+	Debug.COMMAND_FUNCTION + "=echoParamStream"
 
 })
 public class EchoCommand
 {
-	@Reference
-	private LogService log;
+	// @Reference
+	// private LogService log;
 
 	private EchoService echoService;
 
@@ -37,20 +37,20 @@ public class EchoCommand
 		echoService.echoAsync(message).thenRun(() -> System.out.println("Good morning Async"));
 	}
 
-	public void echoStream(String message) throws IOException
+	public void echoReturnStream(String message) throws IOException
 	{
-		System.out.println("Sending to echo service: stream -> " + message);
-		InputStream inputStream = echoService.echoStream(message);
+		System.out.println("Sending to echo service: returnStream -> " + message);
+		InputStream inputStream = echoService.echoReturnStream(message);
 		try (BufferedReader r = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8)))
 		{
 			System.out.println(r.readLine());
 		}
 	}
 
-	public void echoStream2(String message) throws IOException
+	public void echoParamStream(String message) throws IOException
 	{
-		System.out.println("Sending to echo service: stream2 - >" + message);
-		System.out.println(echoService.echoStream2(new ByteArrayInputStream(message.getBytes(StandardCharsets.UTF_8))));
+		System.out.println("Sending to echo service: paramStream -> " + message);
+		System.out.println(echoService.echoParamStream(new ByteArrayInputStream(message.getBytes(StandardCharsets.UTF_8))));
 
 	}
 

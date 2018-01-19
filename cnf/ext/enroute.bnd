@@ -1,6 +1,6 @@
 #
 # -ENROUTE-
-# 
+#
 # This file contains the setup for OSGi enRoute
 #
 
@@ -19,6 +19,13 @@ test-cases: 			${classes;NAMED;*Test}
 -resolve.effective:		resolve, active
 -releaserepo:           Release
 
+-plugin.1.apln-nexus = \
+		aQute.bnd.repository.maven.provider.MavenBndRepository; \
+			releaseUrl=https://maven.pd.apollon.de/repository/repo/; \
+			snapshotUrl=https://maven.pd.apollon.de/repository/repo/; \
+			index=${build}/mavenbnd.mvn; \
+			name="apln-nexus"
+
 -plugin.4.Central:  \
 	aQute.bnd.repository.maven.pom.provider.BndPomRepository; \
 		snapshotUrls=https://oss.sonatype.org/content/groups/osgi; \
@@ -26,14 +33,14 @@ test-cases: 			${classes;NAMED;*Test}
 		pom=${build}/central.xml; \
 		name=Central; \
 		location=${build}/cache/enroute-central.xml
-	        
+
 -plugin.6.Local: \
         aQute.bnd.deployer.repository.LocalIndexedRepo; \
             name                =       Local ; \
             pretty              =       true ; \
             local               =       ${build}/local
 
-	        
+
 
 -plugin.9.Release: \
 \

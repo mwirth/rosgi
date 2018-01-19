@@ -15,3 +15,10 @@ JPM-Command:				echo
 
 -runbundles: \
 	${error;Resolve first}
+
+
+felix.fileinstall.runtimeprops:	\
+		felix.fileinstall.dir=${cnf.path},\
+		felix.fileinstall.poll=1000,\
+		felix.fileinstall.log.level=4
+

@@ -10,14 +10,20 @@ import java.util.concurrent.CompletableFuture;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Deactivate;
+import org.osgi.service.component.annotations.Reference;
+import org.osgi.service.log.LogService;
 import org.osgi.service.metatype.annotations.Designate;
 import org.osgi.service.metatype.annotations.ObjectClassDefinition;
 import org.wimi.rosgi.echo.api.EchoService;
 
 @Designate(ocd = EchoServiceImpl.Config.class, factory = true)
-@Component(name = "org.wimi.rosgi.echo.service")
+@Component(immediate = true, name = "org.wimi.rosgi.echo.service", property = { "service.exported.interfaces=*",
+	"service.exported.configs=aries.fastbin" })
 public class EchoServiceImpl implements EchoService
 {
+
+	@Reference
+	private LogService logService;
 
 	@ObjectClassDefinition
 	@interface Config
@@ -30,23 +36,27 @@ public class EchoServiceImpl implements EchoService
 	@Activate
 	void activate(Config config)
 	{
+		logService.log(LogService.LOG_INFO, "activating");
 		this.name = config.name();
 	}
 
 	@Deactivate
 	void deactivate()
 	{
+		logService.log(LogService.LOG_INFO, "deactivating");
 	}
 
 	@Override
 	public String echo(String msg)
 	{
+		logService.log(LogService.LOG_INFO, "echo called -> " + msg);
 		return String.format("Echo from %s -> %s", name, msg);
 	}
 
 	@Override
 	public CompletableFuture<String> echoAsync(String msg)
 	{
+		logService.log(LogService.LOG_INFO, "echoAsync called -> " + msg);
 		return CompletableFuture.supplyAsync(() -> {
 			try
 			{
@@ -56,20 +66,25 @@ public class EchoServiceImpl implements EchoService
 			{
 				throw new RuntimeException(e);
 			}
-			return String.format("Echo from %s -> %s", name, msg);
+			String retString = String.format("Echo from %s -> %s", name, msg);
+			logService.log(LogService.LOG_INFO, "echoAsync return -> " + retString);
+			return retString;
 		});
 	}
 
 	@Override
-	public InputStream echoStream(String msg)
+	public InputStream echoReturnStream(String msg)
 	{
-		String formattedString = String.format("Echo from %s -> %s", name, msg);
-		return new ByteArrayInputStream(formattedString.getBytes(StandardCharsets.UTF_8));
+		logService.log(LogService.LOG_INFO, "echoStream called -> " + msg);
+		String retString = String.format("Echo from %s -> %s", name, msg);
+		logService.log(LogService.LOG_INFO, "echoStream return -> " + retString);
+		return new ByteArrayInputStream(retString.getBytes(StandardCharsets.UTF_8));
 	}
 
 	@Override
-	public String echoStream2(InputStream msg) throws IOException
+	public String echoParamStream(InputStream msg) throws IOException
 	{
+		logService.log(LogService.LOG_INFO, "echoStream2 called -> " + msg);
 		ByteArrayOutputStream result = new ByteArrayOutputStream();
 		byte[] buffer = new byte[1024];
 		int length;
@@ -77,8 +92,9 @@ public class EchoServiceImpl implements EchoService
 		{
 			result.write(buffer, 0, length);
 		}
-		String formattedString = String.format("Echo from %s -> %s", name, result.toString("UTF-8"));
-		return formattedString;
+		String restString = String.format("Echo from %s -> %s", name, result.toString("UTF-8"));
+		logService.log(LogService.LOG_INFO, "echoStream2 return -> " + restString);
+		return restString;
 	}
 
 }

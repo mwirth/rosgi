@@ -18,8 +18,8 @@ public interface EchoService
 
 	public CompletableFuture<String> echoAsync(String msg);
 
-	public InputStream echoStream(String msg);
+	public InputStream echoReturnStream(String msg);
 
-	public String echoStream2(InputStream msg) throws IOException;
+	public String echoParamStream(InputStream msg) throws IOException;
 
 }

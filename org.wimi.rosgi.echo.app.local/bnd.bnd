@@ -17,12 +17,20 @@ EnRoute-Application: 	org.wimi.rosgi.echo.app.local
 
 -includeresource: \
 	{readme.md}, \
-	{configuration=configuration}, \
+	{configuration=configuration_service}, \
 	{static=static}, \
 	web=web
 
 -buildpath: \
-	osgi.enroute.base.api;version=2.1
+	osgi.enroute.base.api;version=2.1,\
+	org.apache.aries.rsa.core,\
+	org.apache.aries.rsa.topology-manager,\
+	org.apache.aries.rsa.provider.fastbin,\
+	org.apache.hadoop.zookeeper;version=3.4,\
+	org.ops4j.pax.logging.pax-logging-api,\
+	org.ops4j.pax.logging.pax-logging-service,\
+	org.fusesource.hawtbuf.hawtbuf;version=1.11,\
+	org.fusesource.hawtdispatch.hawtdispatch;version=1.22
 
 -testpath: \
 	osgi.enroute.junit.wrapper;version=4.12

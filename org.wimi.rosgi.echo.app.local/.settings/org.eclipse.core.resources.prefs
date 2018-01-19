@@ -1,5 +1,5 @@
 eclipse.preferences.version=1
-encoding//configuration/configuration.json=UTF-8
+encoding//configuration_service/configuration.json=UTF-8
 encoding//src/org/wimi/rosgi/echo/app/local/LocalApp.java=UTF-8
 encoding//static/org.wimi.rosgi.echo.app.local/favicon.ico=UTF-8
 encoding//static/org.wimi.rosgi.echo.app.local/index.html=UTF-8
